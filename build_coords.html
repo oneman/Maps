@@ -13,11 +13,16 @@ function point_it(event){
 
   lotnum_part1 = document.pointform.lotnum_part1.value
   lotnum_part2 = document.pointform.lotnum_part2.value
+
+  var br=document.createElement('br');
   var sqlbuilddiv = document.getElementById("sqlbuild");
   sqlbuilddiv.appendChild(document.createTextNode("INSERT INTO lot_coordinates (lot, pos_x, pos_y) VALUES ('" + lotnum_part1 + "-" + lotnum_part2 + "', '" + pos_x + "', '" + pos_y + "');"));
-   
-  var br=document.createElement('br');
   sqlbuilddiv.appendChild(br);
+
+  var br=document.createElement('br');
+  var jsbuilddiv = document.getElementById("jsbuild");
+  jsbuilddiv.appendChild(document.createTextNode("var lot" + lotnum_part1 + "_" + lotnum_part2 + "=new lot(" + pos_x + ", " + pos_y + ");"));
+  jsbuilddiv.appendChild(br);
 
 	document.pointform.lotnum_part2.value = parseInt(document.pointform.lotnum_part2.value) + 1;
 
@@ -37,6 +42,10 @@ You pointed on x = <input type="text" name="form_x" size="4" /> - y = <input typ
 </form> 
 
 <div id="sqlbuild">
+
+</div>
+
+<div style="margin-top: 50px;" id="jsbuild">
 
 </div>
 </body>
