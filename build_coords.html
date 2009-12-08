@@ -1,0 +1,43 @@
+<html>
+<head>
+<script language="JavaScript">
+
+function point_it(event){
+	pos_x = event.offsetX?(event.offsetX):event.pageX-document.getElementById("pointer_div").offsetLeft;
+	pos_y = event.offsetY?(event.offsetY):event.pageY-document.getElementById("pointer_div").offsetTop;
+	document.getElementById("cross").style.left = (pos_x-6) ;
+	document.getElementById("cross").style.top = (pos_y-7) ;
+	document.getElementById("cross").style.visibility = "visible" ;
+	document.pointform.form_x.value = pos_x;
+	document.pointform.form_y.value = pos_y;
+
+  lotnum_part1 = document.pointform.lotnum_part1.value
+  lotnum_part2 = document.pointform.lotnum_part2.value
+  var sqlbuilddiv = document.getElementById("sqlbuild");
+  sqlbuilddiv.appendChild(document.createTextNode("INSERT INTO lot_coordinates (lot, pos_x, pos_y) VALUES ('" + lotnum_part1 + "-" + lotnum_part2 + "', '" + pos_x + "', '" + pos_y + "');"));
+   
+  var br=document.createElement('br');
+  sqlbuilddiv.appendChild(br);
+
+	document.pointform.lotnum_part2.value = parseInt(document.pointform.lotnum_part2.value) + 1;
+
+}
+</script>
+</head>
+<body>
+<form name="pointform" method="post">
+
+<br/>
+Create for Lots starting with: <input type="text" name="lotnum_part1" size="4" value="1"/>
+Create for Lots ending with: <input type="text" name="lotnum_part2" size="4" value="1"/>
+<br/>
+<div id="pointer_div" onclick="point_it(event)" style = "background-image:url('mastermap.png');width:4127px;height:3300px;">
+<img src="point.gif" id="cross" style="position:relative;visibility:hidden;z-index:2;"></div>
+You pointed on x = <input type="text" name="form_x" size="4" /> - y = <input type="text" name="form_y" size="4" />
+</form> 
+
+<div id="sqlbuild">
+
+</div>
+</body>
+</html>
