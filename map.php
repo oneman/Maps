@@ -1,5 +1,7 @@
 <?php include("header.php"); ?>
 
+<div id="maparea">
+
 <h1>scaled small</h1>
 <script type="text/javascript">
 
@@ -85,5 +87,7 @@ showmarker(lot4_24, crop_and_scaled_test2);
 showmarker(lot5_29, crop_and_scaled_test2, marker2);
 
 </script>
+
+</div>
 
 <?php include("footer.php"); ?>

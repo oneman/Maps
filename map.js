@@ -38,9 +38,19 @@ this.prescale_width = prescale_width;
 this.prescale_height = prescale_height;
 }
 
-function draw()
+function draw(drawtodiv)
 {
-document.write("<div id=\"" + this.mapname + "\" style =\"position: relative;background-image:url('" + this.mapname + ".png');width:" + this.width + "px;height:" + this.height + "px;\"></div>");
+
+var drawtodiv = (drawtodiv == null) ? 'maparea' : drawtodiv;
+
+mapimg=document.createElement("div");
+// Doesn't work in IE7
+//mapimg.setAttribute('style', 'position: relative; width: ' + this.width + 'px; height: ' + this.height + 'px;');
+mapimg.style.cssText = 'position: relative; width: ' + this.width + 'px; height: ' + this.height + 'px;';
+
+mapimg.setAttribute('id', this.mapname);
+mapimg.innerHTML = "<img src=\"" + this.mapname + ".png\">";
+document.getElementById(drawtodiv).appendChild(mapimg);
 }
 
 function showmarker(lot, map, marker)
@@ -63,14 +73,15 @@ new_y = new_y * ((map.height / map.prescale_height));
 new_x = lot.pos_x * ((map.width / master_map.width));
 new_y = lot.pos_y * ((map.height / master_map.height));
 }
-mapimg=document.createElement("img");
-mapimg.setAttribute('src', marker.image);
-mapimg.setAttribute('alt', 'marker');
-mapimg.setAttribute('style', 'position: absolute; z-index: ' + zindex + ';');
-mapimg.setAttribute('id', 'marker' + lot.pos_x + lot.pos_y + map.mapname);
-document.getElementById(map.mapname).appendChild(mapimg);
-document.getElementById('marker' + lot.pos_x + lot.pos_y + map.mapname).style.left = new_x - marker.point_x;
-document.getElementById('marker' + lot.pos_x + lot.pos_y + map.mapname).style.top = new_y - marker.point_y;
+markerimg=document.createElement("img");
+markerimg.setAttribute('src', marker.image);
+markerimg.setAttribute('alt', 'marker');
+
+// This is perhaps a good way to do it, but it wont work in IE7
+// markerimg.setAttribute('style', 'position: absolute; z-index: ' + zindex + '; top: ' + (new_y - marker.point_y) + '; left: ' + (new_x - marker.point_x) + '; ');
+markerimg.style.cssText = 'position: absolute; left: ' + (new_x - marker.point_x) + 'px; top: ' + (new_y - marker.point_y) + 'px;';
+markerimg.setAttribute('id', 'marker' + lot.pos_x + lot.pos_y + map.mapname);
+document.getElementById(map.mapname).appendChild(markerimg);
 
 zindex = zindex + 1;
 }
