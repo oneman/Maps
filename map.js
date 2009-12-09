@@ -1,3 +1,4 @@
+// ***********************************************
 // Functions / Objects and the Like
 
 function master_map(width, height)
@@ -18,7 +19,7 @@ this.pos_x=pos_x
 this.pos_y=pos_y
 }
 
-function map(width,height,mapname,crop_x,crop_y, prescale_width, prescale_height)
+function map(width,height,mapname,crop_x,crop_y, prescale_width, prescale_height, endcrop_x, endcrop_y)
 {
 
 var crop_x = (crop_x == null) ? 0 : crop_x;
@@ -26,6 +27,9 @@ var crop_y = (crop_y == null) ? 0 : crop_y;
 
 var prescale_width = (prescale_width == null) ? 0 : prescale_width;
 var prescale_height = (prescale_height == null) ? 0 : prescale_height;
+
+var endcrop_x = (endcrop_x == null) ? 0 : endcrop_x;
+var endcrop_y = (endcrop_y == null) ? 0 : endcrop_y;
 
 this.width = width;
 this.height = height;
@@ -36,6 +40,9 @@ this.crop_y = crop_y;
 
 this.prescale_width = prescale_width;
 this.prescale_height = prescale_height;
+
+this.endcrop_x = endcrop_x;
+this.endcrop_y = endcrop_y;
 }
 
 function draw(drawtodiv)
@@ -86,13 +93,29 @@ document.getElementById(map.mapname).appendChild(markerimg);
 zindex = zindex + 1;
 }
 
+function find_map(lot, maps) {
+for(var x=0; x<maps.length; x++) {
+ var map = maps[x];
+  if ((map.crop_x < lot.pos_x) && (map.endcrop_x > lot.pos_x) && (map.crop_y < lot.pos_y) && (map.endcrop_y > lot.pos_y)) {
+   return map;
+  }
+ }
+}
+
+// ***********************************************
 // Data as such
 
+
+// master map size
+var master_map = new master_map(4127, 3300)
+
+// markers
 var default_marker = new marker("marker.png", 10, 23)
 var marker2 = new marker("marker2.png", 10, 33)
+var marker_gif = new marker("marker.gif", 10, 23)
 var skull_marker = new marker("skull.png", 21, 30)
 
-var master_map = new master_map(4127, 3300)
+// maps
 
 // map function: width, height, name, upper left corner crop start x, upper left corner crop start y, prescale width, prescale height
 
@@ -102,6 +125,17 @@ var croptest = new map(840,862, "croptest", 1516, 272);
 var crop_and_scaled_test = new map(631,648, "crop_and_scaled_test", 1516, 272, 840, 862);
 
 var crop_and_scaled_test2 = new map(333,198, "crop_and_scaled_test2", 3047, 2035, 1007, 599);
+
+
+// a set of maps thats a cropped set
+
+var crop_and_scaled_test_withend = new map(631,648, "crop_and_scaled_test_withend", 1516, 272, 840, 862, 3000, 1500);
+
+var crop_and_scaled_test2_withend = new map(333,198, "crop_and_scaled_test2_withend", 3047, 2035, 1007, 599, 4000, 3000);
+
+var cropset=new Array(crop_and_scaled_test_withend, crop_and_scaled_test2_withend);
+
+// lots
 
 var lot1_1=new lot(1646, 421);
 var lot1_2=new lot(1735, 421);

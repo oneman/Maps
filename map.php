@@ -1,17 +1,20 @@
 <?php include("header.php"); ?>
 
 <div id="maparea">
-
+<p>I work in firefox, safari, chrome, ie6, ie7, ie8</p>
+<p>I support scaled, cropped and cropped and scaled maps</p>
+<p>Arbiturary markers supported</p>
+<p>I need to use gif markers for ie6 or a transpng hack</p>
 <h1>scaled small</h1>
 <script type="text/javascript">
 
 smallmap.draw();
 
-showmarker(lot1_1, smallmap);
-showmarker(lot1_2, smallmap);
-showmarker(lot1_3, smallmap);
-showmarker(lot1_4, smallmap);
-showmarker(lot1_5, smallmap);
+showmarker(lot1_1, smallmap, marker_gif);
+showmarker(lot1_2, smallmap, marker_gif);
+showmarker(lot1_3, smallmap, marker_gif);
+showmarker(lot1_4, smallmap, marker_gif);
+showmarker(lot1_5, smallmap, marker_gif);
 
 showmarker(lot4_21, smallmap);
 showmarker(lot4_22, smallmap);
@@ -74,11 +77,41 @@ showmarker(lot1_5, crop_and_scaled_test);
 </script>
 
 
-<h1>scaled and cropped 2</h1>
+<h1>find a map based on a lot</h1>
+<script type="text/javascript">
+
+gmap = find_map(lot5_29, cropset);
+
+gmap.draw();
+
+showmarker(lot5_29, gmap);
+</script>
+
+
+<h1>find a map based on a lot 2</h1>
+<script type="text/javascript">
+
+hmap = find_map(lot1_2, cropset);
+
+hmap.draw();
+
+showmarker(lot1_2, hmap);
+</script>
+
+
+</div>
+
+
+
+<div style="margin: 50px; padding: 50px; width: 400px; text-align: center; background-color: red;" id="funkydiv">
+<h1>scaled and cropped test 2 in a funky div</h1>
+
+
+</div>
 
 <script type="text/javascript">
 
-crop_and_scaled_test2.draw();
+crop_and_scaled_test2.draw("funkydiv");
 
 showmarker(lot4_21, crop_and_scaled_test2);
 showmarker(lot4_22, crop_and_scaled_test2);
@@ -88,6 +121,6 @@ showmarker(lot5_29, crop_and_scaled_test2, marker2);
 
 </script>
 
-</div>
+
 
 <?php include("footer.php"); ?>
