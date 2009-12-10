@@ -28,7 +28,7 @@ this.pos_y=pos_y
 
 // *******************************************
 // map object store map info
-function map(width,height,mapname,crop_x,crop_y, prescale_width, prescale_height, endcrop_x, endcrop_y)
+function map(width,height,imagename,crop_x,crop_y, prescale_width, prescale_height, endcrop_x, endcrop_y)
 {
 
 var crop_x = (crop_x == null) ? 0 : crop_x;
@@ -42,7 +42,8 @@ var endcrop_y = (endcrop_y == null) ? 0 : endcrop_y;
 
 this.width = width;
 this.height = height;
-this.mapname = mapname;
+this.imagename = imagename;
+this.divname = imagename.split(".")[0];
 this.draw = draw;
 this.crop_x = crop_x;
 this.crop_y = crop_y;
@@ -66,8 +67,8 @@ mapimg=document.createElement("div");
 //mapimg.setAttribute('style', 'position: relative; width: ' + this.width + 'px; height: ' + this.height + 'px;');
 mapimg.style.cssText = 'position: relative; width: ' + this.width + 'px; height: ' + this.height + 'px;';
 
-mapimg.setAttribute('id', this.mapname);
-mapimg.innerHTML = "<img src=\"" + this.mapname + ".png\">";
+mapimg.setAttribute('id', this.divname);
+mapimg.innerHTML = "<img src=\"" + this.imagename + "\">";
 document.getElementById(drawtodiv).appendChild(mapimg);
 }
 
@@ -101,8 +102,8 @@ markerimg.setAttribute('alt', 'marker');
 // This is perhaps a good way to do it, but it wont work in IE7
 // markerimg.setAttribute('style', 'position: absolute; z-index: ' + zindex + '; top: ' + (new_y - marker.point_y) + '; left: ' + (new_x - marker.point_x) + '; ');
 markerimg.style.cssText = 'position: absolute; left: ' + (new_x - marker.point_x) + 'px; top: ' + (new_y - marker.point_y) + 'px;';
-markerimg.setAttribute('id', 'marker' + lot.pos_x + lot.pos_y + map.mapname);
-document.getElementById(map.mapname).appendChild(markerimg);
+markerimg.setAttribute('id', 'marker' + lot.pos_x + lot.pos_y + map.divname);
+document.getElementById(map.divname).appendChild(markerimg);
 
 zindex = zindex + 1;
 }

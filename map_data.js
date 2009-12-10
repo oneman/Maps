@@ -19,19 +19,19 @@ var skull_marker = new marker("skull.png", 21, 30)
 // if you add the fifth and sixth varible, it assumes the map has been first cropped, then scaled, these varibles are the
 // width and the height of the slice before scaling  
 
-var smallmap = new map(600,480,"smallmap");
-var medmap = new map(1024,819, "medmap");
-var croptest = new map(840,862, "croptest", 1516, 272);
-var crop_and_scaled_test = new map(631,648, "crop_and_scaled_test", 1516, 272, 840, 862);
-var crop_and_scaled_test2 = new map(333,198, "crop_and_scaled_test2", 3047, 2035, 1007, 599);
+var smallmap = new map(600,480,"smallmap.png");
+var medmap = new map(1024,819, "medmap.png");
+var croptest = new map(840,862, "croptest.png", 1516, 272);
+var crop_and_scaled_test = new map(631,648, "crop_and_scaled_test.png", 1516, 272, 840, 862);
+var crop_and_scaled_test2 = new map(333,198, "crop_and_scaled_test2.png", 3047, 2035, 1007, 599);
 
 
 // These maps are part of a cropset or set of map slices
 // the last two numbers are the lower right corner x/y of the cropping pre scaling
 // you would define each one of the slices of the master map here, and include the x, y of the 
 // lower right endpoint of the cropping from the master map
-var crop_and_scaled_test_withend = new map(631,648, "crop_and_scaled_test_withend", 1516, 272, 840, 862, 3000, 1500);
-var crop_and_scaled_test2_withend = new map(333,198, "crop_and_scaled_test2_withend", 3047, 2035, 1007, 599, 4000, 3000);
+var crop_and_scaled_test_withend = new map(631,648, "crop_and_scaled_test_withend.png", 1516, 272, 840, 862, 3000, 1500);
+var crop_and_scaled_test2_withend = new map(333,198, "crop_and_scaled_test2_withend.png", 3047, 2035, 1007, 599, 4000, 3000);
 
 // you then jam all of your slices into an array so they can be looked thru when using the findmap function
 var cropset=new Array(crop_and_scaled_test_withend, crop_and_scaled_test2_withend);
