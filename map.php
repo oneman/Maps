@@ -16,14 +16,14 @@
 // by default it is put into a div with the id 'maparea'
 smallmap.draw();
 
-// showmarker takes 3 arguments, the last one optional
-// the lot, the map and the marker
+// showmarker takes 6 arguments
+// the lot, the map and the marker , extra html options, x ofset, y offset
 
-showmarker(lot1_1, smallmap, marker_crop2, 'onmouseover="return overlib(\'lot1-1!\');" onclick="return overlib(\'This one stays around for a while!\', STICKY, CAPTION, \'Sticky\');" onmouseout="return nd();"');
-showmarker(lot1_2, smallmap, marker_crop2, 'onmouseover="return overlib(\'lot1-2!\');" onclick="return overlib(\'This one stays around for a while!\', STICKY, CAPTION, \'Sticky\');" onmouseout="return nd();"');
+showmarker(lot1_1, smallmap, marker_crop2, 'onmouseover="return overlib(\'lot1-1!\');" onclick="return overlib(\'This one stays around for a while!\', STICKY, CAPTION, \'Sticky\');" onmouseout="return nd();"', 0,1);
+showmarker(lot1_2, smallmap, marker_crop2, 'onmouseover="return overlib(\'lot1-2!\');" onclick="return overlib(\'This one stays around for a while!\', STICKY, CAPTION, \'Sticky\');" onmouseout="return nd();"', 0,6);
 showmarker(lot1_3, smallmap, marker_crop2, 'onclick = alert("monkey");');
-showmarker(lot1_4, smallmap, marker_crop2, 'onmouseover="return overlib(\'lot1-4!\');" onclick="return overlib(\'This one stays around for a while!\', STICKY, CAPTION, \'Sticky\');" onmouseout="return nd();"');
-showmarker(lot1_5, smallmap, marker_crop2, 'onmouseover="return overlib(\'lot1-5!\');" onclick="return overlib(\'This one stays around for a while!\', STICKY, CAPTION, \'Sticky\');" onmouseout="return nd();"');
+showmarker(lot1_4, smallmap, marker_crop2, 'onmouseover="return overlib(\'lot1-4!\');" onclick="return overlib(\'This one stays around for a while!\', STICKY, CAPTION, \'Sticky\');" onmouseout="return nd();"', 0,10);
+showmarker(lot1_5, smallmap, marker_crop2, 'onmouseover="return overlib(\'lot1-5!\');" onclick="return overlib(\'This one stays around for a while!\', STICKY, CAPTION, \'Sticky\');" onmouseout="return nd();"', 0,15);
 
 showmarker(lot4_21, smallmap, marker_crop2);
 showmarker(lot4_22, smallmap, marker_crop2);
@@ -45,10 +45,10 @@ showmarker(lot1_3, medmap);
 showmarker(lot1_4, medmap);
 showmarker(lot1_5, medmap);
 
-showmarker(lot4_21, medmap);
+showmarker(lot4_21, medmap, null, null, -10, 0);
 showmarker(lot4_22, medmap);
-showmarker(lot4_23, medmap);
-showmarker(lot4_24, medmap);
+showmarker(lot4_23, medmap, null, null, 5, 0);
+showmarker(lot4_24, medmap, null, 'onmouseover="return overlib(\'im staggery!!\');" onmouseout="return nd();"', 10, 0);
 showmarker(lot5_29, medmap);
 </script>
 

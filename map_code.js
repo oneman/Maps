@@ -75,10 +75,11 @@ document.getElementById(drawtodiv).appendChild(mapimg);
 
 // *******************************************
 // shows a marker on a map
-function showmarker(lot, map, marker, params)
+function showmarker(lot, map, marker, params, offset_x, offset_y)
 {
 
-var zindex = (zindex == null) ? 2 : zindex;
+var offset_x = (offset_x == null) ? 0 : offset_x;
+var offset_y = (offset_y == null) ? 0 : offset_y;
 
 var marker = (marker == null) ? default_marker : marker;
 
@@ -98,13 +99,17 @@ new_y = lot.pos_y * ((map.height / master_map.height));
 markerimg=document.createElement("div");
 markerimg.innerHTML = "<img " + params + " src=\"" + marker.image + "\">";
 
+// include offset
+var x_pos = (new_x - marker.point_x) + offset_x;
+var y_pos = (new_y - marker.point_y) + offset_y;
+
 // This is perhaps a good way to do it, but it wont work in IE7
 // markerimg.setAttribute('style', 'position: absolute; z-index: ' + zindex + '; top: ' + (new_y - marker.point_y) + '; left: ' + (new_x - marker.point_x) + '; ');
-markerimg.style.cssText = 'position: absolute; left: ' + (new_x - marker.point_x) + 'px; top: ' + (new_y - marker.point_y) + 'px;';
+markerimg.style.cssText = 'position: absolute; left: ' + x_pos + 'px; top: ' + y_pos + 'px;';
 markerimg.setAttribute('id', 'marker' + lot.pos_x + lot.pos_y + map.divname);
 document.getElementById(map.divname).appendChild(markerimg);
 
-zindex = zindex + 1;
+
 }
 
 // *******************************************
