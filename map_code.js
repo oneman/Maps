@@ -96,7 +96,7 @@ new_x = lot.pos_x * ((map.width / master_map.width));
 new_y = lot.pos_y * ((map.height / master_map.height));
 }
 markerimg=document.createElement("div");
-markerimg.innerHTML = "<img " + params + " src=\"" + marker.image + "\" border=\"1\">";
+markerimg.innerHTML = "<img " + params + " src=\"" + marker.image + "\">";
 
 // This is perhaps a good way to do it, but it wont work in IE7
 // markerimg.setAttribute('style', 'position: absolute; z-index: ' + zindex + '; top: ' + (new_y - marker.point_y) + '; left: ' + (new_x - marker.point_x) + '; ');
