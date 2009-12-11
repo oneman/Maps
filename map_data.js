@@ -9,6 +9,8 @@ var master_map = new master_map(4127, 3300)
 // the image filename, and the x, y coordinates of the POINT of the PIN if you will
 var default_marker = new marker("marker.png", 10, 23)
 var marker2 = new marker("marker2.png", 10, 33)
+var marker_crop1 = new marker("marker_crop1.png", 3, 21)
+var marker_crop2 = new marker("marker_crop2.png", 3, 21)
 var marker_gif = new marker("marker.gif", 10, 23)
 var skull_marker = new marker("skull.png", 21, 30)
 

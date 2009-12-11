@@ -75,7 +75,7 @@ document.getElementById(drawtodiv).appendChild(mapimg);
 
 // *******************************************
 // shows a marker on a map
-function showmarker(lot, map, marker)
+function showmarker(lot, map, marker, params)
 {
 
 var zindex = (zindex == null) ? 2 : zindex;
@@ -95,9 +95,8 @@ new_y = new_y * ((map.height / map.prescale_height));
 new_x = lot.pos_x * ((map.width / master_map.width));
 new_y = lot.pos_y * ((map.height / master_map.height));
 }
-markerimg=document.createElement("img");
-markerimg.setAttribute('src', marker.image);
-markerimg.setAttribute('alt', 'marker');
+markerimg=document.createElement("div");
+markerimg.innerHTML = "<img " + params + " src=\"" + marker.image + "\" border=\"1\">";
 
 // This is perhaps a good way to do it, but it wont work in IE7
 // markerimg.setAttribute('style', 'position: absolute; z-index: ' + zindex + '; top: ' + (new_y - marker.point_y) + '; left: ' + (new_x - marker.point_x) + '; ');

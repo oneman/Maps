@@ -19,16 +19,16 @@ smallmap.draw();
 // showmarker takes 3 arguments, the last one optional
 // the lot, the map and the marker
 
-showmarker(lot1_1, smallmap, marker_gif);
-showmarker(lot1_2, smallmap, marker_gif);
-showmarker(lot1_3, smallmap, marker_gif);
-showmarker(lot1_4, smallmap, marker_gif);
-showmarker(lot1_5, smallmap, marker_gif);
+showmarker(lot1_1, smallmap, marker_crop2, 'onmouseover="return overlib(\'lot1-1!\');" onclick="return overlib(\'This one stays around for a while!\', STICKY, CAPTION, \'Sticky\');" onmouseout="return nd();"');
+showmarker(lot1_2, smallmap, marker_crop2, 'onmouseover="return overlib(\'lot1-2!\');" onclick="return overlib(\'This one stays around for a while!\', STICKY, CAPTION, \'Sticky\');" onmouseout="return nd();"');
+showmarker(lot1_3, smallmap, marker_crop2, 'onclick = alert("monkey");');
+showmarker(lot1_4, smallmap, marker_crop2, 'onmouseover="return overlib(\'lot1-4!\');" onclick="return overlib(\'This one stays around for a while!\', STICKY, CAPTION, \'Sticky\');" onmouseout="return nd();"');
+showmarker(lot1_5, smallmap, marker_crop2, 'onmouseover="return overlib(\'lot1-5!\');" onclick="return overlib(\'This one stays around for a while!\', STICKY, CAPTION, \'Sticky\');" onmouseout="return nd();"');
 
-showmarker(lot4_21, smallmap);
-showmarker(lot4_22, smallmap);
-showmarker(lot4_23, smallmap);
-showmarker(lot4_24, smallmap);
+showmarker(lot4_21, smallmap, marker_crop2);
+showmarker(lot4_22, smallmap, marker_crop2);
+showmarker(lot4_23, smallmap, marker_crop2);
+showmarker(lot4_24, smallmap, marker_crop2);
 
 </script>
 
